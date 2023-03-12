@@ -1,25 +1,44 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
+// import { useStore } from "vuex";
+
+// const requireAuth = async (to, from, next) => {
+//   const store = useStore();
+//   const userTest = await store.currentUser();
+//   console.log(userTest);
+//   if (to.meta.requiresAuth && !store.userAuth) return "/logIn" {
+//     next();
+//   // } else {
+//   //   next("logIn");
+//   // }
+// };
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    redirect: "/logIn",
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("../views/DashBoard.vue"),
+    // beforeEnter: requiresAuth,
+  },
+  {
+    path: "/logIn",
+    name: "logIn",
+    component: () => import("../views/LogIn.vue"),
+  },
+  //Route 404
+  {
+    path: "/:pathMatch(.*)*",
+    name: "notfound",
+    component: () => import("../views/NotFound.vue"),
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
