@@ -86,7 +86,7 @@ import router from "@/router";
 import Swal from "sweetalert2";
 import Loading from "../components/Loading.vue";
 
-const api = "http://localhost:3000/api";
+const api = "https://keyence-api.herokuapp.com";
 const logIn = ref(true);
 const store = useStore();
 const loading = ref(true);
@@ -108,7 +108,7 @@ const checkLogIn = option => {
 const singIn = async () => {
   try {
     loading.value = false;
-    const res = await axios.post(api + "/signIn", {
+    const res = await axios.post(api + "/api/signIn", {
       email: userName.value,
       password: password.value
     });
@@ -139,7 +139,7 @@ const singIn = async () => {
 const signUp = async () => {
   try {
     loading.value = false;
-    const res = await axios.post(api + "/signUp", {
+    const res = await axios.post(api + "/api/signUp", {
       userName: newUserName.value,
       email: newEmal.value,
       password: newPassword.value

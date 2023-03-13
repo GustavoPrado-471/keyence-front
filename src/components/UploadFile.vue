@@ -100,7 +100,7 @@ import { ref } from "vue";
 import readXlsFile from "read-excel-file";
 
 const store = useStore();
-const api = "http://localhost:3000/api";
+const api = "https://keyence-api.herokuapp.com";
 const uploadingFile = ref(false);
 const items = ref([]);
 
@@ -153,7 +153,7 @@ const uploadFile = async () => {
       uploadingFile.value = true;
       res.value = await axios({
         method: "POST",
-        url: api + "/newUser",
+        url: api + "/api/newUser",
         headers: { "x-access-token": varToken },
         data: {
           userID: items.value[a][0],

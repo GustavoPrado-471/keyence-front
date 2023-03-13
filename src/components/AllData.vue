@@ -106,7 +106,7 @@ import Swal from "sweetalert2";
 import { ref, onMounted } from "vue";
 
 const counter = ref(-1);
-const api = "http://localhost:3000/api";
+const api = "https://keyence-api.herokuapp.com";
 
 // // Variables for Table
 const items = ref([]);
@@ -134,7 +134,7 @@ const getAllData = async () => {
   try {
     res.value = await axios({
       method: "GET",
-      url: api + "/allUsers",
+      url: api + "/api/allUsers",
       headers: { "x-access-token": varToken },
       data: {}
     });
@@ -179,7 +179,7 @@ const saveNewItem = async () => {
   try {
     res.value = await axios({
       method: "PUT",
-      url: api + "/user/" + itemsOfEdit.value._id,
+      url: api + "/api/user/" + itemsOfEdit.value._id,
       headers: { "x-access-token": varToken },
       data: {
         userID: itemsOfEdit.value.userID,
@@ -232,7 +232,7 @@ const test = async item => {
   try {
     res.value = await axios({
       method: "DELETE",
-      url: api + "/user/" + item._id,
+      url: api + "/api/user/" + item._id,
       headers: { "x-access-token": varToken },
       data: {}
     });
