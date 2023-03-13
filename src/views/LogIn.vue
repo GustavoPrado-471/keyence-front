@@ -30,7 +30,7 @@
         <form v-if="logIn">
           <div class="user-box">
             <input type="text" name required v-model="userName" />
-            <label>Username</label>
+            <label>Email</label>
           </div>
           <div class="user-box">
             <input type="password" name required v-model="password" />
